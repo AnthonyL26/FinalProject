@@ -2,13 +2,13 @@ import java.util.*;
 import org.json.*;
 public class PokeData {
     private String name;
-    private JSONArray moveList;
+    private ArrayList<String> moveList;
     private int id;
     private int height;
     private int weight;
     private int base_experience;
 
-    public PokeData(String name, JSONArray moveList, int id, int height, int weight, int base_experience) {
+    public PokeData(String name, ArrayList<String> moveList, int id, int height, int weight, int base_experience) {
         this.name = name;
         this.moveList = moveList;
         this.id = id;
@@ -21,7 +21,7 @@ public class PokeData {
         return name;
     }
 
-    public JSONArray getMoveList() {
+    public ArrayList<String> getMoveList() {
         return moveList;
     }
 

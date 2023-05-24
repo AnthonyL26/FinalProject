@@ -11,10 +11,13 @@ public class MainGUI extends JFrame implements ActionListener{
 
     private Networking api;
     private PokeData pokeData;
+    private InfoWindow infoWindow;
 
     public MainGUI() {
-        createUIComponents();
         api = new Networking();
+        infoWindow = new InfoWindow();
+        createUIComponents();
+
     }
 
     private void createUIComponents() {
