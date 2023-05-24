@@ -23,7 +23,6 @@ public class InfoWindow extends JFrame {
         setTitle("PokeSearch");
         setSize(1000, 1500);
         setLocation(0, 0);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
     public void display(PokeData mon) {
