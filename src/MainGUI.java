@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class MainGUI extends JFrame implements ActionListener{
     private JTextField input;
@@ -8,6 +9,7 @@ public class MainGUI extends JFrame implements ActionListener{
     private JPanel panel;
     private JLabel name;
     private JLabel text1;
+    private JButton random;
 
     private Networking api;
     private PokeData pokeData;
@@ -33,6 +35,16 @@ public class MainGUI extends JFrame implements ActionListener{
                 System.out.println(pokemon.getName());
             }
                  });
+        random.addActionListener(evt -> {
+            int rand = (int) (Math.random()*900)+1;
+            System.out.println(rand);
+            PokeData randPoke = api.getPokemon(rand);
+            try {
+                infoWindow.display(randPoke);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
 
     }
 
