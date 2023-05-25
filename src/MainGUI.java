@@ -32,7 +32,11 @@ public class MainGUI extends JFrame implements ActionListener{
         search.addActionListener(evt -> {
             if (api.getPokemon(input.getText().toLowerCase()) != null) {
                 PokeData pokemon = api.getPokemon(input.getText().toLowerCase());
-                System.out.println(pokemon.getName());
+                try {
+                    infoWindow.display(pokemon);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
                  });
         random.addActionListener(evt -> {
