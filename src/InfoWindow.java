@@ -8,9 +8,11 @@ import java.io.IOException;
 public class InfoWindow extends JFrame {
     private JLabel displayName;
     private JPanel infoWindow;
-    private JTextArea info;
+    private JTextArea info1;
     private JButton back;
     private JLabel sprite;
+    private JLabel idLabel;
+    private JLabel heightLabel;
 
     public InfoWindow() {
         createUIComponents();
@@ -35,17 +37,17 @@ public class InfoWindow extends JFrame {
         image = image.getScaledInstance(300, 300, Image.SCALE_DEFAULT);
         sprite.setIcon(new ImageIcon(image));
         displayName.setText(mon.getName());
+        idLabel.setText("ID: " + mon.getID());
+        heightLabel.setText("Height: " + mon.getHeight() + "dm");
         String words =
-                "ID: " + mon.getID() +
-                "\nHeight: " + mon.getHeight() + "dm" +
-                "\nBase Experience: " + mon.getBaseExperience() + "\nMove List:\n";
+                "Move List:\n";
         for (int i = 0; i < mon.getMoveList().size();i++) {
             words += mon.getMoveList().get(i) + " | ";
             if (i % 5 == 0 && i != 0) {
                 words += "\n";
             }
         }
-        info.setText(words);
+        info1.setText(words);
         setVisible(true);
     }
 
