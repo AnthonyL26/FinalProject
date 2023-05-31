@@ -10,6 +10,7 @@ import org.json.JSONArray;
 
 public class Networking {
     private static final String BASE_URL = "https://pokeapi.co/api/v2/pokemon/";
+    private static final String BASE_URL2 = "https://pokeapi.co/api/v2/move/";
 
     public static PokeData getPokemon(String name) {
         String url = BASE_URL + name;
@@ -83,4 +84,34 @@ public class Networking {
             return pokemon;
         }
     }
+    public static Move getMove(String move) {
+        String url = BASE_URL2 + move;
+        String urlResponse = "";
+        try {
+            URI myUri = URI.create(url);
+            HttpRequest request = HttpRequest.newBuilder().uri(myUri).build();
+            HttpClient client = HttpClient.newHttpClient();
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            urlResponse = response.body();
+
+        } catch (Exception e) {
+
+        }
+
+        if (urlResponse.equals("Not Found")) {
+            return null;
+        } else {
+            JSONObject currentObj = new JSONObject(urlResponse);
+            String name = currentObj.getString("name");
+            JSONArray effects = currentObj.getJSONArray("effect_entries");
+            String effect = effects.getJSONObject(0).getString("effect");
+            int accuracy = currentObj.getInt("accuracy");
+            int pp = currentObj.getInt("pp");
+            int power = currentObj.getInt("power");
+            String type = currentObj.getJSONObject("type").getString("name");
+
+            return new Move(name, power, effect, accuracy, pp, type);
+        }
+    }
+
 }

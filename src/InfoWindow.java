@@ -13,13 +13,24 @@ public class InfoWindow extends JFrame {
     private JLabel sprite;
     private JLabel idLabel;
     private JLabel heightLabel;
-
+    private JTextField moveText;
+    private JButton search;
+    private MoveInfo moveInfo;
     public InfoWindow() {
         createUIComponents();
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
+            }
+        });
+        search.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                moveInfo = new MoveInfo();
+                if (Networking.getMove(moveText.getText()) != null) {
+                    moveInfo.display(Networking.getMove(moveText.getText()));
+                }
             }
         });
     }
