@@ -104,13 +104,23 @@ public class Networking {
             JSONObject currentObj = new JSONObject(urlResponse);
             String name = currentObj.getString("name");
             JSONArray effects = currentObj.getJSONArray("effect_entries");
-            String effect = effects.getJSONObject(0).getString("effect");
-            int accuracy = currentObj.getInt("accuracy");
+            String effect;
+            try  {
+                effect = effects.getJSONObject(0).getString("effect");
+            } catch (Exception e){
+                effect = null;
+            }
+            Integer acc = null;
+            try {
+                acc = currentObj.getInt("accuracy");
+            } catch (Exception e){
+
+            }
             int pp = currentObj.getInt("pp");
             int power = currentObj.getInt("power");
             String type = currentObj.getJSONObject("type").getString("name");
 
-            return new Move(name, power, effect, accuracy, pp, type);
+            return new Move(name, power, effect, acc, pp, type);
         }
     }
 
