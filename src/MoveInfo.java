@@ -15,15 +15,15 @@ public class MoveInfo extends JFrame{
     private void createUIComponents() {
         setContentPane(moveInfo);
         setTitle("PokeSearch");
-        setSize(300, 200);
+        setSize(300, 300);
     }
     public void display(Move move) {
         name.setText(move.getName());
-        type.setText(move.getType());
-        pp.setText("" + move.getPp());
-        accuracy.setText("" + move.getAccuracy());
-        power.setText("" + move.getPower());
-        effect.setText(move.getEffect());
+        type.setText("Type: " + move.getType());
+        pp.setText("PP: " + move.getPp());
+        accuracy.setText("Accuracy: " + move.getAccuracy());
+        power.setText("Power: " + move.getPower());
+        effect.setText("<html><p>"+ move.getEffect() +"</p></html>");
         setVisible(true);
     }
 }
