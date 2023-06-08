@@ -116,8 +116,18 @@ public class Networking {
             } catch (Exception e){
 
             }
-            int pp = currentObj.getInt("pp");
-            int power = currentObj.getInt("power");
+            Integer pp = null;
+            try {
+                pp = currentObj.getInt("pp");
+            } catch (Exception e){
+
+            }
+            Integer power = null;
+            try {
+                power = currentObj.getInt("power");
+            } catch (Exception e){
+
+            }
             String type = currentObj.getJSONObject("type").getString("name");
 
             return new Move(name, power, effect, acc, pp, type);

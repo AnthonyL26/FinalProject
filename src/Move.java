@@ -1,12 +1,12 @@
 public class Move {
-    private int power;
+    private Integer power;
     private String effect;
     private Integer accuracy;
-    private int pp;
+    private Integer pp;
     private String type;
     private String name;
 
-    public Move(String name, int power, String effect, Integer accuracy, int pp, String type) {
+    public Move(String name, Integer power, String effect, Integer accuracy, Integer pp, String type) {
         this.power =power;
         this.effect =effect;
         this.accuracy =accuracy;
@@ -15,7 +15,7 @@ public class Move {
         this.name = name;
     }
 
-    public int getPower() {
+    public Integer getPower() {
         return power;
     }
 
@@ -27,7 +27,7 @@ public class Move {
         return effect;
     }
 
-    public int getPp() {
+    public Integer getPp() {
         return pp;
     }
 
